@@ -5,7 +5,7 @@ import java.util.prefs.Preferences;
 public class DisplayThread implements Runnable {
     public DisplayThread() {
         Preferences root = Preferences.userRoot();
-        final Preferences node = root.node("/com/birlasoft/gui");
+        final Preferences node = root.node("/com/rapstor/gui");
         intervalTime = node.getInt("IntervalTime", 10);
     }
 

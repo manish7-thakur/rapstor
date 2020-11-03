@@ -1,4 +1,4 @@
-package com.birlasoft.gui;
+package com.rapstor.gui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +10,7 @@ public class SettingPanel extends JPanel {
     public SettingPanel(JFrame frame) {
         this.frame = frame;
         root = Preferences.userRoot();
-        node = root.node("/com/birlasoft/gui");
+        node = root.node("/com/rapstor/gui");
         OKButton = new JButton("OK");
         displayFashionLabel = new JLabel("Message Display Fashion");
         fashionCombo = new JComboBox(new String[]{"Orderly", "Random"});

@@ -1,7 +1,7 @@
-package com.birlasoft.gui;
+package com.rapstor.gui;
 
-import com.birlasoft.io.DataIO;
-import com.birlasoft.io.Message;
+import com.rapstor.io.DataIO;
+import com.rapstor.io.Message;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-import com.birlasoft.gui.ScreenDisplayFrame;
+import com.rapstor.gui.ScreenDisplayFrame;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,7 +11,7 @@ public class DisplayAction implements ActionListener {
 
     public DisplayAction() {
         Preferences root = Preferences.userRoot();
-        Preferences node = root.node("/com/birlasoft/gui");
+        Preferences node = root.node("/com/rapstor/gui");
         showTime = node.getInt("ShowTime", 5);
         fashion = node.get("Fashion", "Orderly");
         pos = 0;

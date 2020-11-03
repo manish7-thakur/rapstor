@@ -1,4 +1,4 @@
-package com.birlasoft.gui;
+package com.rapstor.gui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +15,7 @@ public class TabbedFrame extends JFrame implements WindowListener {
         ClassLoader cl = this.getClass().getClassLoader();
         setIconImage(Toolkit.getDefaultToolkit().getImage(cl.getResource("Launch.jpeg")));
         root = Preferences.userRoot();
-        node = root.node("/com/birlasoft/gui");
+        node = root.node("/com/rapstor/gui");
         String theme = node.get("Theme", "javax.swing.plaf.metal.MetalLookAndFeel");
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Dimension screenSize = toolkit.getScreenSize();

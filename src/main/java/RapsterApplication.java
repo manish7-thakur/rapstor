@@ -1,4 +1,4 @@
-import com.birlasoft.gui.TabbedFrame;
+import com.rapstor.gui.TabbedFrame;
 
 import javax.swing.*;
 import java.awt.*;
