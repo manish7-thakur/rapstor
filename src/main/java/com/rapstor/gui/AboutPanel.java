@@ -80,7 +80,7 @@ path.curveTo(getWidth()/2-arcWidth/2, getHeight()/2+arcLength/3,getWidth()/2-arc
         outerCircle.setFrameFromCenter(getWidth() / 2, getHeight() / 2, getWidth() / 2 + 150, getHeight() / 2 - 150);
         g2d.draw(outerCircle);
         int radiusOuterCircle = 150;
-        g2d.drawString("With Regards, the Hot Docs team", getWidth() / 2 - radiusOuterCircle, getHeight() / 2 + radiusOuterCircle + 15);
+        g2d.drawString("With Regards, no shit", getWidth() / 2 - radiusOuterCircle, getHeight() / 2 + radiusOuterCircle + 15);
         int NEquiPoints = 11;
         Point2D equiPoints[] = new Point2D.Double[NEquiPoints];
         float rotateAngle = (float) 360 / NEquiPoints;
