@@ -20,8 +20,8 @@ public class ScreenDisplayFrame extends JFrame {
         setFocusableWindowState(false);
         setIconImage(Toolkit.getDefaultToolkit().getImage("Launch.jpeg"));
         screenDisplayPanel = new JPanel();
-        shortMessageField = new JTextField(SHORT_MESSAGE_LENGTH);
-        shortMessageField.setEditable(false);
+        shortMessageField = new JLabel();
+        //shortMessageField.setEditable(false);
         shortMessageField.setText("No Messages Stored");
         longDescArea = new JTextArea();
         longDescArea.setEditable(false);
@@ -83,7 +83,7 @@ public class ScreenDisplayFrame extends JFrame {
         longDescArea.setText(longDescrition);
     }
 
-    private JTextField shortMessageField; // don't hard Code
+    private JLabel shortMessageField; // don't hard Code
     private JTextArea longDescArea;
     private JPanel screenDisplayPanel;
     private static final int SHORT_MESSAGE_LENGTH = 30;
