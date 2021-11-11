@@ -25,12 +25,7 @@ public class DataIO {
         }
     }
 
-    public static void deleteRecord(String file, long pointerPosition, int recordSize) {
-		/*ReentrantReadWriteLock rwl = new ReentrantReadWriteLock(); 
-
-		FileLock lock = null;
-		rwl.writeLock().lock();*/
-        File readFile = new File(file);
+    public static void deleteRecord(File readFile, long pointerPosition, int recordSize) {
         RandomAccessFile readRandFile = null;
         RandomAccessFile writeRandFile = null;
         try {
@@ -45,7 +40,6 @@ public class DataIO {
             ex.printStackTrace();
         }
         try {
-            /*lock = readRandFile.getChannel().lock();*/
             while (readRandFile.getFilePointer() != readRandFile.length()) {
                 if (readRandFile.getFilePointer() == pointerPosition) {
                     readRandFile.skipBytes(recordSize);
@@ -66,9 +60,6 @@ public class DataIO {
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
-				/*try{
-				lock.release();
-				} catch(IOException ex){ex.printStackTrace();}*/
         }
     }
 }

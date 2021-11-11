@@ -59,13 +59,9 @@ public class NewMessagePanel extends JPanel {
                     return;
                 }
                 String userDir = System.getProperty("user.home");
-//File fileDir = new File(userDir, ".Rapstor");
-//if(!fileDir.exists()) fileDir.mkdir();
                 RandomAccessFile msgDataFile = null;
                 try {
-                    System.out.println("Hello");
-                    msgDataFile = new RandomAccessFile(new File(userDir + "/.Rapstor", "MesData.rap"), "rw");// use File.seperator
-                    System.out.println("Hello2");
+                    msgDataFile = new RandomAccessFile(new File(userDir + File.separator + ".Rapstor", "MesData.rap"), "rw");
                     msgDataFile.seek(msgDataFile.length());
                     writeData(msgDataFile);
 

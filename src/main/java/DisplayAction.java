@@ -39,7 +39,7 @@ public class DisplayAction implements ActionListener {
     public void actionPerformed(ActionEvent ev) {
 
         try {
-            file = new RandomAccessFile(dataFile /*new File(userDir + "/.Rapstor/MesData.rap")*/, "r");
+            file = new RandomAccessFile(dataFile, "r");
         } catch (FileNotFoundException ex) {
 
             ex.printStackTrace();

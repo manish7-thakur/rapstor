@@ -10,7 +10,6 @@ import java.io.RandomAccessFile;
 
 public class ScreenDisplayFrame extends JFrame {
     public ScreenDisplayFrame() {
-        System.out.println("icon-bulb");
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Dimension screenSize = toolkit.getScreenSize();
         int screenHeight = (int) (0.12 * screenSize.getHeight());

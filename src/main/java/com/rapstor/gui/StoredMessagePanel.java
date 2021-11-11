@@ -17,7 +17,7 @@ public class StoredMessagePanel extends JPanel {
     public StoredMessagePanel() {
         userDir = System.getProperty("user.home");
         try {
-            msgDataFile = new RandomAccessFile(new File(userDir + "/.Rapstor/MesData.rap"), "rw");// use File.seperator
+            msgDataFile = new RandomAccessFile(new File(userDir + File.separator + ".Rapstor", "MesData.rap"), "rw");
             pointerPosition = msgDataFile.getFilePointer();
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
@@ -48,7 +48,6 @@ public class StoredMessagePanel extends JPanel {
         add(nextButton, new GBC(1, 3).setSpan(1, 1).setWeight(100, 0).setFill(GBC.HORIZONTAL).setInsets(1));
         add(deleteButton, new GBC(2, 3).setSpan(1, 1).setWeight(100, 0).setFill(GBC.HORIZONTAL).setInsets(1));
 
-//Event Handling
         nextButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 try {
@@ -56,8 +55,6 @@ public class StoredMessagePanel extends JPanel {
                         JOptionPane.showMessageDialog(null, "Reached to the End");
                         return;
                     }
-//System.out.println(msgDataFile.getFilePointer());
-//msgDataFile.seek(msgDataFile.getFilePointer() + RECORD_SIZE);
                     pointerPosition = msgDataFile.getFilePointer();
                     readData(msgDataFile);
                     displayData();
@@ -78,32 +75,27 @@ public class StoredMessagePanel extends JPanel {
                     msgDataFile.seek(pointerPosition);
                     readData(msgDataFile);
                     displayData();
-//msgDataFile.seek(msgDataFile.getFilePointer() - RECORD_SIZE);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
             }
         });
 
-// Delete button Event handling
-
         deleteButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
-//JOptionPane.showMessageDialog(null,"This option is not available.Please wait for the next release");
                 int selectedValue = JOptionPane.showConfirmDialog(null, "Are you sure you want delete the selected Message?", "Conform File Delete", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                 if (selectedValue == JOptionPane.YES_OPTION) {
                     try {
-                        //msgDataFile.getChannel().lock();
                         msgDataFile.close();
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }
 
-                    DataIO.deleteRecord(userDir + "/.Rapstor/MesData.rap", pointerPosition, RECORD_SIZE);
+                    DataIO.deleteRecord(new File(userDir + File.separator + ".Rapstor", "MesData.rap"), pointerPosition, RECORD_SIZE);
                     shortDescField.setText("");
                     longDescArea.setText("");
                     try {
-                        msgDataFile = new RandomAccessFile(new File(userDir + "/.Rapstor/MesData.rap"), "rw");// use File.seperator
+                        msgDataFile = new RandomAccessFile(new File(userDir + File.separator + ".Rapstor", "MesData.rap"), "rw");
                     } catch (FileNotFoundException ex) {
                         ex.printStackTrace();
                     }
@@ -122,25 +114,9 @@ public class StoredMessagePanel extends JPanel {
     public void readData(RandomAccessFile in) throws IOException {
         String msg = DataIO.readFixedString(SHORT_MESSAGE_LENGTH, in);
         stMessage.setShortDescription(msg);
-//System.out.println(stMessage.getShortDescription());
-//in.seek(in.getFilePointer() + SHORT_MESSAGE_LENGTH * 2);
         msg = DataIO.readFixedString(LONG_MESSAGE_LENGTH, in);
         stMessage.setLongDescription(msg);
-//System.out.println(stMessage.getLongDescription());
-//in.seek(in.getFilePointer()-SHORT_MESSAGE_LENGTH);
     }
-
-
-/**
- Move the Pointer to the specified Record
- */
-
-/*
-public void moveToRecord(int recordLength,RandomAccessFile in)
-{
-in.seek(in.getFilePointer() + recordLength);
-}
-*/
 
     /**
      * Displays the data in the required component
