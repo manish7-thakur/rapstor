@@ -21,7 +21,6 @@ public class ScreenDisplayFrame extends JFrame {
         setIconImage(Toolkit.getDefaultToolkit().getImage("Launch.jpeg"));
         screenDisplayPanel = new JPanel();
         shortMessageField = new JLabel();
-        //shortMessageField.setEditable(false);
         shortMessageField.setText("No Messages Stored");
         longDescArea = new JTextArea();
         longDescArea.setEditable(false);
