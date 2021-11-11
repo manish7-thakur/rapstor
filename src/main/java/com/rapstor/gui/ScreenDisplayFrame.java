@@ -12,24 +12,23 @@ public class ScreenDisplayFrame extends JFrame {
     public ScreenDisplayFrame() {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Dimension screenSize = toolkit.getScreenSize();
-        int screenHeight = (int) (0.23 * screenSize.getHeight());
-        int screenWidth = screenHeight + 70;
+        int screenHeight = (int) (0.15 * screenSize.getHeight());
+        int screenWidth = (int) (0.20 * screenSize.getHeight() + screenHeight/2);
         setSize(screenWidth, screenHeight);
         setUndecorated(true);
         setAlwaysOnTop(true);
         setFocusableWindowState(false);
         setIconImage(Toolkit.getDefaultToolkit().getImage("Launch.jpeg"));
         screenDisplayPanel = new JPanel();
-        screenDisplayPanel.setBorder(BorderFactory.createEtchedBorder());
         shortMessageField = new JTextField(SHORT_MESSAGE_LENGTH);
-        shortMessageField.setBorder(BorderFactory.createRaisedBevelBorder());
         shortMessageField.setEditable(false);
         shortMessageField.setText("No Messages Stored");
         longDescArea = new JTextArea();
-        longDescArea.setBorder(BorderFactory.createRaisedBevelBorder());
         longDescArea.setEditable(false);
         longDescArea.setLineWrap(true);
         longDescArea.setText("To add a note click on tray icon and choose \"Open UI\"");
+        screenDisplayPanel.setDoubleBuffered(true);
+        screenDisplayPanel.setOpaque(false);
         screenDisplayPanel.setLayout(new GridBagLayout());
         screenDisplayPanel.add(shortMessageField, new GBC(0, 0).setAnchor(GBC.EAST).setSpan(1, 1).setWeight(100, 0).setFill(GBC.HORIZONTAL));
         screenDisplayPanel.add(longDescArea, new GBC(0, 1).setSpan(1, 1).setWeight(100, 100).setAnchor(GBC.EAST).setFill(GBC.BOTH));
