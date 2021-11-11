@@ -10,9 +10,10 @@ import java.io.RandomAccessFile;
 
 public class ScreenDisplayFrame extends JFrame {
     public ScreenDisplayFrame() {
+        System.out.println("icon-bulb");
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Dimension screenSize = toolkit.getScreenSize();
-        int screenHeight = (int) (0.15 * screenSize.getHeight());
+        int screenHeight = (int) (0.12 * screenSize.getHeight());
         int screenWidth = (int) (0.20 * screenSize.getHeight() + screenHeight/2);
         setSize(screenWidth, screenHeight);
         setUndecorated(true);
@@ -20,8 +21,11 @@ public class ScreenDisplayFrame extends JFrame {
         setFocusableWindowState(false);
         setIconImage(Toolkit.getDefaultToolkit().getImage("Launch.jpeg"));
         screenDisplayPanel = new JPanel();
-        shortMessageField = new JLabel();
-        shortMessageField.setText("No Messages Stored");
+        shortMessageField = new JLabel("No Messages Stored");
+        int imageBound = shortMessageField.getPreferredSize().height;
+        Image image = Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("icon-bulb.png"))
+                .getScaledInstance(imageBound, imageBound,  java.awt.Image.SCALE_SMOOTH);
+        shortMessageField.setIcon(new ImageIcon(image));
         longDescArea = new JTextArea();
         longDescArea.setEditable(false);
         longDescArea.setLineWrap(true);
@@ -38,36 +42,17 @@ public class ScreenDisplayFrame extends JFrame {
 
     @Override
     public void setVisible(boolean b) {
-        if (b == true) {
+        if (b) {
             super.setVisible(b);  /*update(getGraphics());*/
             for (int i = 0; i <= this.getWidth(); i++) {
                 setLocation(Toolkit.getDefaultToolkit().getScreenSize().width - i, YOFFSET);
-				
-				/*try 
-					{
-				Thread.sleep(0);
-					}
-				catch(InterruptedException ex)
-				{
-					ex.printStackTrace();
-				}*/
             }
 
         } else {
             for (int i = 0; i <= this.getWidth(); i++) {
                 setLocation(this.getX() + i, YOFFSET);
-				
-				/*try 
-					{
-				Thread.sleep(0);
-					}
-				catch(InterruptedException ex)
-				{
-					ex.printStackTrace();
-				}*/
-
             }
-            super.setVisible(b);
+            super.setVisible(false);
         }
     }
 
@@ -87,7 +72,5 @@ public class ScreenDisplayFrame extends JFrame {
     private JPanel screenDisplayPanel;
     private static final int SHORT_MESSAGE_LENGTH = 30;
     private static final int LONG_MESSAGE_LENGTH = 250;
-    private static final int SCREEN_WIDTH = 300;
-    private static final int SCREEN_HEIGHT = 200;
     private static final int YOFFSET = 30;
 }
