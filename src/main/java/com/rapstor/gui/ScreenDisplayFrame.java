@@ -18,11 +18,11 @@ public class ScreenDisplayFrame extends JFrame {
         setUndecorated(true);
         setAlwaysOnTop(true);
         setFocusableWindowState(false);
-        setIconImage(Toolkit.getDefaultToolkit().getImage("Launch.jpeg"));
+        setIconImage(Toolkit.getDefaultToolkit().getImage("launch.png"));
         screenDisplayPanel = new JPanel();
         shortMessageField = new JLabel("No Messages Stored");
         int imageBound = shortMessageField.getPreferredSize().height;
-        Image image = Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("icon-bulb.png"))
+        Image image = Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("icon-bulb.jpeg"))
                 .getScaledInstance(imageBound, imageBound,  java.awt.Image.SCALE_SMOOTH);
         shortMessageField.setIcon(new ImageIcon(image));
         longDescArea = new JTextArea();

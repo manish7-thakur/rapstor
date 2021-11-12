@@ -47,7 +47,7 @@ public class RapsterApplication {
         popup.add(exitItem);
 //URL url = RapsterApplication.class.getResource("Images/Birla.Jpeg");
         ClassLoader cl = RapsterApplication.class.getClassLoader();
-        icon = new TrayIcon(Toolkit.getDefaultToolkit().getImage(cl.getResource("Launch.jpeg")), "CL Rapstor", popup);
+        icon = new TrayIcon(Toolkit.getDefaultToolkit().getImage(cl.getResource("launch.png")), "CL Rapstor", popup);
         icon.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
                 icon.displayMessage("What the hell you want?", "Right click for the list of options", TrayIcon.MessageType.INFO);

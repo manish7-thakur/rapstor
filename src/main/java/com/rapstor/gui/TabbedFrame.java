@@ -8,12 +8,10 @@ import java.util.prefs.Preferences;
 
 public class TabbedFrame extends JFrame implements WindowListener {
     public TabbedFrame() {
-        //setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         setResizable(false);
-        setTitle("CL Rapstor 1.0");
-        //URL iconUrl = RapsterApplication.class.getResource("Images/Birla.jpeg");
+        setTitle("Rapstor");
         ClassLoader cl = this.getClass().getClassLoader();
-        setIconImage(Toolkit.getDefaultToolkit().getImage(cl.getResource("Launch.jpeg")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(cl.getResource("launch.png")));
         root = Preferences.userRoot();
         node = root.node("/com/rapstor/gui");
         String theme = node.get("Theme", "javax.swing.plaf.metal.MetalLookAndFeel");
@@ -33,24 +31,11 @@ public class TabbedFrame extends JFrame implements WindowListener {
         rapstorTabbedPane.addTab("New Message", newMessagePanel);
         StoredMessagePanel storedMesPanel = new StoredMessagePanel();
         rapstorTabbedPane.addTab("Stored Messages", storedMesPanel);
-		/*rapstorTabbedPane.addChangeListener(new ChangeListener()
-		{
-			public void stateChanged(ChangeEvent evt)
-				{
-					if(rapstorTabbedPane.getSelectedComponent() ==  storedMesPanel);
-					RandomAccessFile msgDataFile = new RandomAccessFile("Data/MesData.txt","r");// use File.seperator
-					storedMesPanel.readData();
-					storedMesPanel.displayData();
-					msgDataFile.close();
-				}
-			
-		});*/
         SettingPanel setPanel = new SettingPanel(this);
         rapstorTabbedPane.addTab("Settings", setPanel);
         AboutPanel aboutPanel = new AboutPanel("Birlasoft");
         rapstorTabbedPane.add("About", aboutPanel);
         add(rapstorTabbedPane);
-        //setResizable(false);
         setLocation(node.getInt("X", 20), node.getInt("Y", 20));
         addWindowListener(this);
     }
@@ -80,6 +65,4 @@ public class TabbedFrame extends JFrame implements WindowListener {
 
     Preferences root;
     Preferences node;
-    private static final int SCREEN_WIDTH = 450;
-    private static final int SCREEN_HEIGHT = 400;
 }
